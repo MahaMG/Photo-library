@@ -1,0 +1,267 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'poppins', sans-serif;
+}
+
+.continare {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0 16px;
+    position: relative;
+}
+
+/* Navbar */
+
+.navbar {
+    padding: 44px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+.navbar .left {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.navbar .right {
+    padding: 5px 0;
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .right a {
+    text-decoration: none;
+    color: #000;
+}
+
+.navbar .right a:hover {
+    text-decoration: underline;
+}
+
+.navbar .right img {
+    width: 24px;
+    height: 24px;
+}
+
+.navbar .hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.navbar .hamburger .bar {
+    height: 4px;
+    width: 30px;
+    background-color: #333;
+    margin: 3px;
+    border-radius: 10px;
+}
+
+.hamburger .animateBar1 {
+    animation: flipBar1 .5s forwards;
+}
+.hamburger .animateBar2 {
+    animation: fadeBar2 .5s forwards;
+}
+.hamburger .animateBar3 {
+    animation: flipBar3 .5s forwards;
+}
+
+@keyframes flipBar1 {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(45deg) translate(4px, 10px);
+
+    }
+}
+
+@keyframes fadeBar2 {
+    from {
+        transform: scaleX(1);
+    }
+    to {
+        transform: scaleX(0);
+    }
+}
+
+@keyframes flipBar3{
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(-45deg) translate(4px, -10px);
+
+    }
+}
+
+/***************************************************/
+/* Mobile Navbar */
+
+.mobileNav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 100vh;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    right: -160px;
+    z-index: 3;
+    transition: all .5s;
+}
+
+.mobileNav a {
+    margin: 16px;
+    color: #000;
+    text-decoration: none;
+}
+
+.mobileNav a:hover {
+    text-decoration: underline;
+}
+
+.mobileNav img {
+    width: 24px;
+    height: 24px;
+}
+
+.showMobileNav {
+    transform: translateX(-160px);
+}
+/***************************************************/
+
+/* Photo Grid */
+
+.photos-wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-areas: 
+    "eth eth alphabet"
+    "eth eth traveler"
+    "cube astro traveler"
+    "cup insta insta"
+    "cup insta insta"
+    "foam foam dimensional";
+    gap: 16px;
+}
+
+.eth { grid-area: eth; }
+.alphabet { grid-area: alphabet; }
+.traveler { grid-area: traveler; }
+.cube { grid-area: cube; }
+.astro { grid-area: astro; }
+.insta { grid-area: insta; }
+.cup { grid-area: cup; }
+.foam { grid-area: foam; }
+.dimensional { grid-area: dimensional; }
+
+.photos-wrapper .photo{
+    position: relative;
+}
+
+.photos-wrapper .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photos-wrapper .photo .overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    font-size: 36px;
+    color: #333;
+    letter-spacing: 2px;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, .2);
+    opacity: 0;
+    transition: all .3s ease-in-out;
+}
+.photos-wrapper .photo:hover .overlay {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.footer {
+    padding: 44px;
+    text-align: center;
+    font-size: 13px;
+}
+
+@media only screen and (max-width: 1100px){
+    .continare {
+        max-width: 100%;
+        /* margin: 0 16px; */
+    }
+    .photos-wrapper {
+        max-width: 100%;
+        grid-template-areas: 
+        "eth eth"
+        "alphabet traveler"
+        "cube astro"
+        "insta insta"
+        "cup foam"
+        "dimensional dimensional";
+    }
+    /* .cube { grid-area: cube; }
+    .astro { grid-area: astro; } */
+}
+
+@media only screen and (max-width: 768px) {
+
+    .navbar {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 16px 24px;
+        background-color: #fff;
+        z-index: 2;
+    }
+
+    .navbar .right {
+        display: none;
+    }
+
+    .navbar .hamburger {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 6;
+    }
+
+    .photos-wrapper {
+        margin-top: 100px;
+        grid-template-areas: 
+        "eth eth"
+        "alphabet alphabet"
+        "traveler traveler"
+        "cube astro"
+        "insta insta"
+        "cup cup"
+        "foam foam"
+        "dimensional dimensional";
+    }
+    .photos-wrapper .photo .overlay {
+        font-size: 24px;
+    }
+}
